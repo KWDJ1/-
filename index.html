@@ -128,6 +128,21 @@
         });
     }
 </script>
+<!-- Button to copy the current page URL -->
+<button type="button" onclick="copyPageURL()">Copy Page URL</button>
+
+<script>
+    /**
+     * Function to copy the current page URL to the clipboard.
+     * This allows users to easily share the website link with others.
+     */
+    function copyPageURL() {
+        const pageURL = window.location.href; // Gets the current page URL
+        navigator.clipboard.writeText(pageURL).then(() => {
+            alert("Page URL copied to clipboard! Share it to encourage others to support Medicaid expansion.");
+        });
+    }
+</script>
 
 </body>
 </html>
