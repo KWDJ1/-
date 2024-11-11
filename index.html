@@ -128,8 +128,61 @@
         });
     }
 </script>
-<!-- Button to copy the current page URL -->
-<button type="button" onclick="copyPageURL()">Copy Page URL</button>
+<!-- Social Share Buttons -->
+<div style="text-align: center; margin-top: 20px;">
+    <h3>Share This Page</h3>
+    
+    <!-- Twitter -->
+    <a href="https://twitter.com/share?url=<URL>&text=<TITLE>" class="share-btn twitter" target="_blank">Twitter</a>
+    
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u=<URL>" class="share-btn facebook" target="_blank">Facebook</a>
+    
+    <!-- Reddit -->
+    <a href="https://reddit.com/submit?url=<URL>&title=<TITLE>" class="share-btn reddit" target="_blank">Reddit</a>
+    
+    <!-- Hacker News -->
+    <a href="https://news.ycombinator.com/submitlink?u=<URL>&t=<TITLE>" class="share-btn hackernews" target="_blank">Hacker News</a>
+    
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/shareArticle?url=<URL>&title=<TITLE>&summary=<SUMMARY>&source=<URL>" class="share-btn linkedin" target="_blank">LinkedIn</a>
+    
+    <!-- Email -->
+    <a href="mailto:?subject=<TITLE>&body=Check this out: <URL>" class="share-btn email">Email</a>
+    
+    <!-- Copy URL Button -->
+    <button onclick="copyPageURL()" class="share-btn copy">Copy URL</button>
+</div>
+
+<!-- CSS for Social Buttons -->
+<style>
+    /** Social Button CSS **/
+    .share-btn {
+      display: inline-block;
+      color: #ffffff;
+      border: none;
+      padding: 0.5em 1em;
+      margin: 0.3em;
+      text-align: center;
+      font-size: 0.9em;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: opacity 0.2s ease-in-out;
+      cursor: pointer;
+    }
+    
+    .share-btn:hover {
+      opacity: 0.8;
+    }
+    
+    .share-btn.twitter { background: #55acee; }
+    .share-btn.facebook { background: #3B5998; }
+    .share-btn.reddit { background: #ff5700; }
+    .share-btn.hackernews { background: #ff6600; }
+    .share-btn.linkedin { background: #4875B4; }
+    .share-btn.email { background: #444444; }
+    .share-btn.copy { background: #6c757d; }
+</style>
 
 <script>
     /**
@@ -139,10 +192,13 @@
     function copyPageURL() {
         const pageURL = window.location.href; // Gets the current page URL
         navigator.clipboard.writeText(pageURL).then(() => {
-            alert("Page URL copied to clipboard! Share it to encourage others to support Medicaid expansion.");
+            alert("Page URL copied to clipboard! Share it to encourage others.");
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
         });
     }
 </script>
+
 
 </body>
 </html>
