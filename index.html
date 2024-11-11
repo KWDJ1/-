@@ -11,6 +11,39 @@
         input, button { width: 100%; padding: 10px; margin-bottom: 15px; font-size: 1em; }
         .button-group { display: flex; gap: 10px; }
     </style>
+      <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Share Buttons Example</title>
+    <style>
+        /** Social Button CSS **/
+        .share-btn {
+            display: inline-block;
+            color: #ffffff;
+            border: none;
+            padding: 0.5em 1em;
+            outline: none;
+            text-align: center;
+            font-size: 0.9em;
+            margin: 0.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .share-btn:focus,
+        .share-btn:hover {
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        .share-btn.twitter     { background: #55acee; }
+        .share-btn.facebook    { background: #3B5998; }
+        .share-btn.reddit      { background: #ff5700; }
+        .share-btn.hackernews  { background: #ff6600; }
+        .share-btn.linkedin    { background: #4875B4; }
+        .share-btn.email       { background: #444444; }
+        .share-btn.copy        { background: #6c757d; color: #ffffff; }
+    </style>
 </head>
 <body>
 
@@ -154,43 +187,8 @@
     <!-- Copy URL Button -->
     <button onclick="copyPageURL()" class="share-btn copy">Copy URL</button>
 </div>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Share Buttons Example</title>
-    <style>
-        /** Social Button CSS **/
-        .share-btn {
-            display: inline-block;
-            color: #ffffff;
-            border: none;
-            padding: 0.5em 1em;
-            outline: none;
-            text-align: center;
-            font-size: 0.9em;
-            margin: 0.2em;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-        }
 
-        .share-btn:focus,
-        .share-btn:hover {
-            text-decoration: none;
-            opacity: 0.8;
-        }
 
-        .share-btn.twitter     { background: #55acee; }
-        .share-btn.facebook    { background: #3B5998; }
-        .share-btn.reddit      { background: #ff5700; }
-        .share-btn.hackernews  { background: #ff6600; }
-        .share-btn.linkedin    { background: #4875B4; }
-        .share-btn.email       { background: #444444; }
-        .share-btn.copy        { background: #6c757d; color: #ffffff; }
-    </style>
-</head>
 <body>
 
 <h3>Share This Page</h3>
