@@ -152,6 +152,32 @@
     <!-- Copy URL Button -->
     <button onclick="copyPageURL()" class="share-btn copy">Copy URL</button>
 </div>
+#test1
+<!-- Social Share Buttons -->
+<div style="text-align: center; margin-top: 20px;">
+    <h3>Share This Page</h3>
+    
+    <!-- Twitter -->
+    <a href="#" class="share-btn twitter" onclick="shareOnTwitter()">Twitter</a>
+    
+    <!-- Facebook -->
+    <a href="#" class="share-btn facebook" onclick="shareOnFacebook()">Facebook</a>
+    
+    <!-- Reddit -->
+    <a href="#" class="share-btn reddit" onclick="shareOnReddit()">Reddit</a>
+    
+    <!-- Hacker News -->
+    <a href="#" class="share-btn hackernews" onclick="shareOnHackerNews()">Hacker News</a>
+    
+    <!-- LinkedIn -->
+    <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn()">LinkedIn</a>
+    
+    <!-- Email -->
+    <a href="#" class="share-btn email" onclick="shareViaEmail()">Email</a>
+    
+    <!-- Copy URL Button -->
+    <button onclick="copyPageURL()" class="share-btn copy">Copy URL</button>
+</div>
 
 <!-- Social Share Buttons -->
 <div style="text-align: center; margin-top: 20px;">
@@ -181,20 +207,22 @@
 
 <!-- CSS for Social Buttons -->
 <style>
-    /** Social Button CSS **/
+    /* General styling for all buttons */
     .share-btn {
       display: inline-block;
       color: #ffffff;
-      padding: 10px 15px;
-      margin: 5px;
-      font-size: 16px;
+      padding: 10px 20px;
+      margin: 8px;
+      font-size: 15px;
+      font-weight: bold;
       text-align: center;
       text-decoration: none;
-      border-radius: 4px;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, opacity 0.3s ease;
     }
     
+    /* Individual button colors for each platform */
     .share-btn.twitter { background-color: #55acee; }
     .share-btn.facebook { background-color: #3B5998; }
     .share-btn.reddit { background-color: #ff5700; }
@@ -203,8 +231,9 @@
     .share-btn.email { background-color: #444444; }
     .share-btn.copy { background-color: #6c757d; color: #ffffff; border: none; }
     
+    /* Hover effect for better visual feedback */
     .share-btn:hover {
-      opacity: 0.8;
+      opacity: 0.85;
       text-decoration: none;
     }
 </style>
@@ -251,7 +280,6 @@
         });
     }
 </script>
-
 
 </body>
 </html>
