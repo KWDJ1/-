@@ -127,31 +127,30 @@
             alert("Message script copied to clipboard!");
         });
     }
-</script>
 <!-- Social Share Buttons -->
 <div style="text-align: center; margin-top: 20px;">
     <h3>Share This Page</h3>
     
     <!-- Twitter -->
-    <a href="https://twitter.com/share?url=<URL>&text=<TITLE>" class="share-btn twitter" target="_blank">Twitter</a>
+    <a href="#" class="share-btn twitter" onclick="shareOnTwitter()">Twitter</a>
     
     <!-- Facebook -->
-    <a href="https://www.facebook.com/sharer/sharer.php?u=<URL>" class="share-btn facebook" target="_blank">Facebook</a>
+    <a href="#" class="share-btn facebook" onclick="shareOnFacebook()">Facebook</a>
     
     <!-- Reddit -->
-    <a href="https://reddit.com/submit?url=<URL>&title=<TITLE>" class="share-btn reddit" target="_blank">Reddit</a>
+    <a href="#" class="share-btn reddit" onclick="shareOnReddit()">Reddit</a>
     
     <!-- Hacker News -->
-    <a href="https://news.ycombinator.com/submitlink?u=<URL>&t=<TITLE>" class="share-btn hackernews" target="_blank">Hacker News</a>
+    <a href="#" class="share-btn hackernews" onclick="shareOnHackerNews()">Hacker News</a>
     
     <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/shareArticle?url=<URL>&title=<TITLE>&summary=<SUMMARY>&source=<URL>" class="share-btn linkedin" target="_blank">LinkedIn</a>
+    <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn()">LinkedIn</a>
     
     <!-- Email -->
-    <a href="mailto:?subject=<TITLE>&body=Check this out: <URL>" class="share-btn email">Email</a>
+    <a href="#" class="share-btn email" onclick="shareViaEmail()">Email</a>
     
     <!-- Copy URL Button -->
-    <button onclick="copyPageURL()" class="share-btn copy">Copy link to share!</button>
+    <button onclick="copyPageURL()" class="share-btn copy">Copy URL</button>
 </div>
 
 <!-- CSS for Social Buttons -->
@@ -185,13 +184,41 @@
 </style>
 
 <script>
-    /**
-     * Function to copy the current page URL to the clipboard.
-     * This allows users to easily share the website link with others.
-     */
+    // Dynamically retrieve the current page URL and title for sharing
+    const pageURL = encodeURIComponent(window.location.href);
+    const pageTitle = encodeURIComponent(document.title);
+    const pageSummary = encodeURIComponent("Check out this page!");
+
+    // Functions for each share button
+    function shareOnTwitter() {
+        window.open(`https://twitter.com/share?url=${pageURL}&text=${pageTitle}`, '_blank');
+    }
+
+    function shareOnFacebook() {
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${pageURL}`, '_blank');
+    }
+
+    function shareOnReddit() {
+        window.open(`https://reddit.com/submit?url=${pageURL}&title=${pageTitle}`, '_blank');
+    }
+
+    function shareOnHackerNews() {
+        window.open(`https://news.ycombinator.com/submitlink?u=${pageURL}&t=${pageTitle}`, '_blank');
+    }
+
+    function shareOnLinkedIn() {
+        window.open(`https://www.linkedin.com/shareArticle?url=${pageURL}&title=${pageTitle}&summary=${pageSummary}&source=${pageURL}`, '_blank');
+    }
+
+    function shareViaEmail() {
+        const emailSubject = `Check out this page: ${decodeURIComponent(pageTitle)}`;
+        const emailBody = `I thought you might find this interesting:\n\n${decodeURIComponent(pageTitle)}\n\nLink: ${decodeURIComponent(pageURL)}`;
+        window.location.href = `mailto:?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    }
+
+    // Function to copy the current page URL to the clipboard
     function copyPageURL() {
-        const pageURL = window.location.href; // Gets the current page URL
-        navigator.clipboard.writeText(pageURL).then(() => {
+        navigator.clipboard.writeText(decodeURIComponent(pageURL)).then(() => {
             alert("Page URL copied to clipboard! Share it to encourage others.");
         }).catch(err => {
             console.error('Failed to copy: ', err);
