@@ -13,37 +13,7 @@
     </style>
       <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Share Buttons Example</title>
-    <style>
-        /** Social Button CSS **/
-        .share-btn {
-            display: inline-block;
-            color: #ffffff;
-            border: none;
-            padding: 0.5em 1em;
-            outline: none;
-            text-align: center;
-            font-size: 0.9em;
-            margin: 0.2em;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .share-btn:focus,
-        .share-btn:hover {
-            text-decoration: none;
-            opacity: 0.8;
-        }
-
-        .share-btn.twitter     { background: #55acee; }
-        .share-btn.facebook    { background: #3B5998; }
-        .share-btn.reddit      { background: #ff5700; }
-        .share-btn.hackernews  { background: #ff6600; }
-        .share-btn.linkedin    { background: #4875B4; }
-        .share-btn.email       { background: #444444; }
-        .share-btn.copy        { background: #6c757d; color: #ffffff; }
-    </style>
+   
 </head>
 <body>
 
@@ -161,59 +131,8 @@
         });
     }
 
-<!-- Inline Styles for Social Share Buttons -->
-<style>
-    .share-btn {
-        display: inline-block;
-        color: #ffffff;
-        padding: 10px 20px;
-        margin: 5px;
-        font-size: 15px;
-        text-align: center;
-        text-decoration: none;
-        border-radius: 5px;
-        cursor: pointer;
-        background-color: #6c757d;
-    }
-    
-    /* Specific colors for each social platform */
-    .share-btn.twitter { background-color: #55acee; }
-    .share-btn.facebook { background-color: #3B5998; }
-    .share-btn.reddit { background-color: #ff5700; }
-    .share-btn.hackernews { background-color: #ff6600; }
-    .share-btn.linkedin { background-color: #4875B4; }
-    .share-btn.email { background-color: #444444; }
-    .share-btn.copy { background-color: #6c757d; }
 
-    /* Hover effect */
-    .share-btn:hover {
-        opacity: 0.85;
-    }
-</style>
 
-<!-- Social Share Buttons with URL and Title -->
-<div>
-    <a href="https://twitter.com/share?url=https://is.gd/OIm0rr&text=Check this out!" class="share-btn twitter" target="_blank">Twitter</a>
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://is.gd/OIm0rr" class="share-btn facebook" target="_blank">Facebook</a>
-    <a href="https://reddit.com/submit?url=https://is.gd/OIm0rr&title=Check this out!" class="share-btn reddit" target="_blank">Reddit</a>
-    <a href="https://news.ycombinator.com/submitlink?u=https://is.gd/OIm0rr&t=Check this out!" class="share-btn hackernews" target="_blank">Hacker News</a>
-    <a href="https://www.linkedin.com/shareArticle?url=https://is.gd/OIm0rr&title=Check this out!&summary=Check this out!&source=https://is.gd/OIm0rr" class="share-btn linkedin" target="_blank">LinkedIn</a>
-    <a href="mailto:?subject=Check this out!&body=I thought you might find this interesting: https://is.gd/OIm0rr" class="share-btn email">Email</a>
-
-    <!-- Copy URL Button -->
-    <button onclick="copyPageURL()" class="share-btn copy">Copy URL</button>
-</div>
-
-<script>
-    function copyPageURL() {
-        const pageURL = "https://is.gd/OIm0rr";
-        navigator.clipboard.writeText(pageURL).then(() => {
-            alert("Page URL copied to clipboard!");
-        }).catch(err => {
-            console.error('Failed to copy: ', err);
-        });
-    }
-</script>
 
 
 </body>
