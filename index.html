@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,11 +9,8 @@
         body { font-family: Arial, sans-serif; margin: 20px; max-width: 700px; }
         label { display: block; margin: 10px 0 5px; }
         input, button { width: 100%; padding: 10px; margin-bottom: 15px; font-size: 1em; }
-        .button-group { display: flex; gap: 10px; }
+        .button-group { display: flex; flex-wrap: wrap; gap: 10px; }
     </style>
-      <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
 </head>
 <body>
 
@@ -24,6 +21,7 @@
 <ul>
     <li>Automatically compose the email using your email client.</li>
     <li>Manually copy the email addresses and message text to paste into your preferred email platform.</li>
+    <li>Share the page link with others to encourage more support.</li>
 </ul>
 
 <!-- Form for users to enter their name and address, which will personalize the email content -->
@@ -37,13 +35,12 @@
     <label for="address">Jacksonville Address:</label>
     <input type="text" id="address" required>
     
-    <!-- Option 1: Automatically Compose Email with the user's default email client -->
+    <!-- Options for user interaction -->
     <div class="button-group">
         <button type="button" onclick="composeEmail()">Compose Email Automatically</button>
-        
-        <!-- Option 2: Manually Copy Email Addresses and Script for use in any email platform -->
         <button type="button" onclick="copyEmails()">Copy Email Addresses</button>
         <button type="button" onclick="copyMessage()">Copy Message Script</button>
+        <button type="button" onclick="copyPageURL()">Copy Link</button>
     </div>
 </form>
 
@@ -61,79 +58,79 @@
 
     /**
      * Function to copy all council members' email addresses to the user's clipboard.
-     * This is helpful for users who prefer to manually paste email addresses in their email client.
      */
     function copyEmails() {
         const emailList = emails.join(", ");
-        
-        // Use the Clipboard API to copy email addresses to the clipboard
         navigator.clipboard.writeText(emailList).then(() => {
-            alert("Email addresses copied to clipboard!"); // Confirmation message
+            alert("Email addresses copied to clipboard!");
+        }).catch(() => {
+            alert("Failed to copy email addresses.");
         });
     }
 
     /**
-     * Function to compose an email in the user's default mail client with a pre-filled message.
-     * The message includes the user's first name, last name, and address, along with support for Resolution 2024-776.
+     * Function to compose an email in the user's default mail client.
+     * BCCs all council members instead of adding them directly to the "to" field.
      */
     function composeEmail() {
-        // Retrieve user's first name, last name, and address from the input fields
         const firstName = document.getElementById("firstName").value;
         const lastName = document.getElementById("lastName").value;
         const address = document.getElementById("address").value;
 
-        // Alert the user if any field is left empty
         if (!firstName || !lastName || !address) {
             alert("Please fill in all fields before composing the email.");
             return;
         }
 
-        // Define the subject line and email body, incorporating user inputs
         const subject = "Support for Resolution 2024-776";
         const body = `Hello to the City Council of Jacksonville,\n\n` +
             `I am ${firstName} ${lastName}, a resident of Jacksonville at ${address}. ` +
             `I would like to state my strong support for Resolution 2024-776, which advocates for Medicaid expansion in Florida.\n\n` +
-            `As a community, we believe Medicaid expansion will help ensure that all Duval County residents have access to necessary healthcare. Thank you for your time and dedication to improving healthcare access in our city.\n\n` +
+            `Thank you for your time and dedication to improving healthcare access in our city.\n\n` +
             `Sincerely,\n${firstName} ${lastName}`;
 
-        // Construct mailto link with council email addresses, subject, and body
-        const mailtoLink = `mailto:${emails.join(",")}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        
-        // Open the user's default email client with the "mailto" link
+        const mailtoLink = `mailto:?bcc=${emails.join(",")}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         window.location.href = mailtoLink;
     }
 
     /**
-     * Function to copy the email message script (body content) to the user's clipboard.
-     * This allows users to manually paste it into any email platform.
+     * Function to copy the email message script to the user's clipboard.
      */
     function copyMessage() {
         const firstName = document.getElementById("firstName").value;
         const lastName = document.getElementById("lastName").value;
         const address = document.getElementById("address").value;
 
-        // Check if all fields are filled
         if (!firstName || !lastName || !address) {
             alert("Please fill in all fields before copying the message script.");
             return;
         }
 
-        // Construct the message content
         const message = `Hello to the City Council of Jacksonville,\n\n` +
             `I am ${firstName} ${lastName}, a resident of Jacksonville at ${address}. ` +
             `I would like to state my strong support for Resolution 2024-776, which advocates for Medicaid expansion in Florida.\n\n` +
-            `As a community, we believe Medicaid expansion will help ensure that all Duval County residents have access to necessary healthcare. Thank you for your time and dedication to improving healthcare access in our city.\n\n` +
+            `Thank you for your time and dedication to improving healthcare access in our city.\n\n` +
             `Sincerely,\n${firstName} ${lastName}`;
 
-        // Copy the constructed message to the clipboard
         navigator.clipboard.writeText(message).then(() => {
             alert("Message script copied to clipboard!");
+        }).catch(() => {
+            alert("Failed to copy message script.");
         });
     }
 
-
-
-
+    /**
+     * Function to copy the fixed page URL to the clipboard.
+     */
+    function copyPageURL() {
+        const pageURL = "https://is.gd/OIm0rr"; // Fixed URL
+        navigator.clipboard.writeText(pageURL).then(() => {
+            alert("Page link copied to clipboard!");
+        }).catch(() => {
+            alert("Failed to copy page link.");
+        });
+    }
+</script>
 
 </body>
 </html>
